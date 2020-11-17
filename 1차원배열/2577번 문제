@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(String[] args) {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			int a[] = new int[3];
+			int b[] = new int[10];
+			for (int i = 0; i < a.length; i++) {
+				a[i] = Integer.parseInt(br.readLine());
+			}
+
+			String sum = Integer.toString(a[0] * a[1] * a[2]);
+
+			for (int i = 0; i < sum.length(); i++) {
+				int getnumber = Integer.parseInt(String.valueOf(sum.charAt(i)));
+				b[getnumber]+=1;
+			}
+			for (int i = 0; i < b.length; i++) {
+				System.out.println(b[i]);
+			}
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
