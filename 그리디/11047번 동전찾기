@@ -1,4 +1,32 @@
-푸는중 ..
+import java.util.Scanner;
+
+
+public class Main {
+	public static void main(String[] args) {
+		try {
+			Scanner scanner = new Scanner(System.in);
+			
+			int a = scanner.nextInt();
+			int b = scanner.nextInt();
+			int coin_count = 0;
+			int c[] = new int[a];
+			
+			for(int i=0; i<a; i++) {
+				c[i] = scanner.nextInt();
+			}
+			for(int i = a - 1; i >= 0; i--) {
+				if(b >= c[i]) {
+					coin_count += (b / c[i]);
+					b = b % c[i];
+				}
+			}
+			System.out.println(coin_count);
+			scanner.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
 
 
 문제
