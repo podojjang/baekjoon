@@ -4,27 +4,31 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		try {
-			Scanner scanner = new Scanner(System.in);
-			
+			Scanner scanner = new Scanner(System.in);			
 			int a = scanner.nextInt();
 			int b = scanner.nextInt();
-			int coin_count = 0;
-			int c[] = new int[a];
-			
-			for(int i=0; i<a; i++) {
-				c[i] = scanner.nextInt();
-			}
-			for(int i = a - 1; i >= 0; i--) {
-				if(b >= c[i]) {
-					coin_count += (b / c[i]);
-					b = b % c[i];
-				}
-			}
-			System.out.println(coin_count);
+			int arr[] = new int[a];			
+			arrayInsert(arr, a, scanner);
+			System.out.println(coinSearch(a, b, arr));
 			scanner.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	private static void arrayInsert(int[] arr, int coins, Scanner scanner) {
+		for(int i=0; i<coins; i++) {
+			arr[i] = scanner.nextInt();
+		}
+	}
+	private static int coinSearch(int coins, int money, int[] arr) {
+		int coin_count = 0;
+		for(int i = coins - 1; i >= 0; i--) {
+			if(money >= arr[i]) {
+				coin_count += (money / arr[i]);
+				money = money % arr[i];
+			}
+		}
+		return coin_count;
 	}
 }
 
