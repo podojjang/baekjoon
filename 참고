@@ -1,0 +1,71 @@
+이상값 찾기
+- 사분위 범위 (IQR : Interquatile Range)
+def outliers_iqr(data):
+ q1, q3 = np.percentile(data, [25, 75])
+ iqr = q3 - q1
+ lower_bound = q1 - (iqr * 1.5)
+ upper_bound = q3 + (iqr * 1.5)
+ return np.where((data > upper_bound) | (data < lower_bound))
+
+- Z-Score [ Z = (검사할 표본의 값 - 평균) / 표준편차 ] -  외워 두기
+평균으로부터 떨어진 거리를 표준편차로 나눔
+3 or -3 정도 떨어지면 이상값으로 간주함
+
+def outliers_z_score(data) :
+    threshold = 3
+    mean = np.mean(data)
+    std = np.std(data)
+    z_scores = [(y - mean) / std for y in data]
+    return np.where(np.abs(z_scores) > threshold)
+
+
+독립변수 = 피쳐 = 변수
+- Features, Independent Variable
+- 함수의 입력 값,아규먼트 
+
+종속변수
+- 함수의 출력 값,리턴 값
+
+
+Linear Regression 선형 회귀
+Polynomial Regression 곡선 회귀 [ 2차식 사용 ]
+
+
+from sklearn.datasets import load_boston
+dataset = load_boston() #테스트 데이터
+df['MEDV'] = dataset.target
+RM 가구당 방 수
+LSTAT 인구 밀도가 낮은 상태
+
+
+상관관계
+상관계수가 가장 영향이 큰 3개를 MEDV를 기준으로 인덱스를 가져옴
+df.corr().abs().nlargest(3, 'MEDV').index
+
+다중회귀
+독립변수 한개는 한개의 축을 가져야함 x축 y축
+
+상하각, 좌우각
+ax.view_init(30, degree)
+
+
+맥주 소비량csv
+온도 강우량 소비량()
+소비량에 영향이 큰 2개의 요인을 추출
+다중회귀분석을 적용
+검증
+
+실측치 vs 예측치 산점도에 표시
+추정
+
+각 요인에 대한 계수 및 절편 구하기
+
+Υ = βｏ + β₁Χ₁ +β₂Χ₂
+
+
+
+array = new Array()
+{1,2,3,4}
+
+
+
